@@ -5,7 +5,12 @@ export default {
   runTime: {
     version,
     name,
-    dynamicOptionsUrl: true
+    dynamicOptionsUrl: true,
+    noLogin: true,
+    noAppSwitcher: true,
+    icon: {
+      class: 'source-code'
+    }
   },
   buildTime: {
     federation: [
