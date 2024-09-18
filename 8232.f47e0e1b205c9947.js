@@ -1,0 +1,2 @@
+/*! For license information please see 8232.f47e0e1b205c9947.js.LICENSE.txt */
+"use strict";(self.webpackChunkc8y_os_repo_overview=self.webpackChunkc8y_os_repo_overview||[]).push([[8232],{28232:(e,s,d)=>{d.r(s),d.d(s,{default:()=>o});const c=void 0,o=[[["middernacht","’s ochtends","’s middags","’s avonds","’s nachts"],c,c],[["middernacht","ochtend","middag","avond","nacht"],c,c],["00:00",["06:00","12:00"],["12:00","18:00"],["18:00","24:00"],["00:00","06:00"]]]}}]);

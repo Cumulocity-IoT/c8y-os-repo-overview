@@ -1,0 +1,13 @@
+{
+  "version": "0.0.0",
+  "name": "c8y-os-repo-overview",
+  "dynamicOptionsUrl": true,
+  "noLogin": true,
+  "noAppSwitcher": true,
+  "icon": {
+    "class": "source-code"
+  },
+  "contextPath": "c8y-os-repo-overview",
+  "key": "c8y-os-repo-overview-application-key",
+  "webSdkVersion": "1020.26.0"
+}
