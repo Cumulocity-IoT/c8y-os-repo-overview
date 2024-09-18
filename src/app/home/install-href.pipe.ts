@@ -14,6 +14,8 @@ export class InstallHrefPipe implements PipeTransform {
       return of(false);
     }
 
-    return of(false);
+    // uncomment to disable installation button
+    // return of(false);
+    return of(`/install/${repo.full_name}`);
   }
 }

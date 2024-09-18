@@ -1,0 +1,22 @@
+<c8y-modal
+  [title]="'Tenant'"
+  [headerClasses]="'dialog-header'"
+  [labels]="{ cancel: 'Cancel', ok: 'Save' }"
+  (onDismiss)="cancel()"
+  (onClose)="save()"
+>
+
+
+<c8y-form-group>
+  <label>Tenant URL</label>
+  <input
+    class="form-control"
+    [maxlength]="254"
+    autocomplete="off"
+    placeholder="e.g. https://demo.cumulocity.com"
+    [(ngModel)]="tenant"
+  />
+</c8y-form-group>
+
+
+</c8y-modal>

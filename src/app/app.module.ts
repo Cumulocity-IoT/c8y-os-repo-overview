@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {
+        path: 'install/:org/:repo',
+        component: HomeComponent,
+      },
+      {
         path: '',
         pathMatch: 'full',
         component: HomeComponent,
@@ -19,6 +23,6 @@ import { HomeComponent } from './home/home.component';
     ]),
     CoreModule.forRoot(),
   ],
-  bootstrap: [BootstrapComponent]
+  bootstrap: [BootstrapComponent],
 })
 export class AppModule {}
