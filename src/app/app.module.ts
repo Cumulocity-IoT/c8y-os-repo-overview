@@ -19,6 +19,6 @@ import { HomeComponent } from './home/home.component';
     ]),
     CoreModule.forRoot(),
   ],
-  bootstrap: [BootstrapComponent],
+  bootstrap: [BootstrapComponent]
 })
 export class AppModule {}
