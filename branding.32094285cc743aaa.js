@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkc8y_os_repo_overview=self.webpackChunkc8y_os_repo_overview||[]).push([[878],{7806:(e,s,o)=>{o.r(s)}}]);

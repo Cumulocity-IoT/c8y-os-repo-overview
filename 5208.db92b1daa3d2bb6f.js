@@ -1,2 +1,0 @@
-/*! For license information please see 5208.db92b1daa3d2bb6f.js.LICENSE.txt */
-"use strict";(self.webpackChunkc8y_os_repo_overview=self.webpackChunkc8y_os_repo_overview||[]).push([[5208],{15208:(e,o,s)=>{s.r(o),s.d(o,{default:()=>r});const c=void 0,r=[[["午夜","早上","上午","中午","下午","晚上","凌晨"],c,["午夜","清晨","上午","中午","下午","晚上","凌晨"]],[["午夜","早上","上午","中午","下午","晚上","凌晨"],c,c],["00:00",["05:00","08:00"],["08:00","12:00"],["12:00","13:00"],["13:00","19:00"],["19:00","24:00"],["00:00","05:00"]]]}}]);
