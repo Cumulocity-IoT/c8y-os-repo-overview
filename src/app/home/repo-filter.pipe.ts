@@ -6,17 +6,17 @@ import { RepoEntry } from './repo.type';
   standalone: true
 })
 export class RepoFilterPipe implements PipeTransform {
-  transform(repos: RepoEntry[], searchText: string, category: string, trust_level: string): RepoEntry[] {
+  transform(repos: RepoEntry[], searchText: string, selectedCategories: string[], trust_level: string[]): RepoEntry[] {
     if (!repos?.length) {
       return [];
     }
 
-    if (category) {
-      repos = repos.filter((repo) => Array.isArray(repo['os-categories']) && repo['os-categories'].includes(category));
+    if (selectedCategories?.length) {
+      repos = repos.filter((repo) => Array.isArray(repo['os-categories']) && repo['os-categories'].some(category => selectedCategories.includes(category)));
     }
 
-    if (trust_level) {
-      repos = repos.filter((repo) => repo.trust_level === trust_level);
+    if (trust_level?.length) {
+      repos = repos.filter((repo) => trust_level.includes(repo.trust_level));
     }
 
     if (searchText) {

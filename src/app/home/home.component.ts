@@ -15,6 +15,10 @@ import { FormsModule } from '@angular/forms';
 import { uniq } from 'lodash-es';
 import { SetupTenantService } from './setup-tenant/setup-tenant.service';
 import { filter } from 'rxjs/operators';
+import { SupportedIcons } from '@c8y/ngx-components/icon-selector/icons';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { A11yModule } from '@angular/cdk/a11y';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @Component({
   selector: 'app-home',
@@ -34,6 +38,9 @@ import { filter } from 'rxjs/operators';
     CoreModule,
     RepoFilterPipe,
     FormsModule,
+    BsDropdownModule,
+    TooltipModule,
+    A11yModule,
   ],
 })
 export class HomeComponent implements OnInit {
@@ -41,10 +48,34 @@ export class HomeComponent implements OnInit {
   repos: RepoEntry[] = [];
   listClass: any;
   searchText = '';
-  category = '';
+  selectedCategories: string[] = [];
   categoryOptions: string[] = [];
-  trust = '';
-  trustOptions: string[] = [];
+  trust: RepoEntry['trust_level'][] = [];
+  trustOptions: {
+    label: string;
+    icon: SupportedIcons;
+    trustLevels: RepoEntry['trust_level'][];
+    iconClass: string;
+  }[] = [
+    {
+      label: 'Trusted & Official',
+      icon: 'c8y-shield',
+      iconClass: 'text-info',
+      trustLevels: ['Trusted', 'Official'],
+    },
+    {
+      label: 'Official',
+      icon: 'shield',
+      iconClass: 'text-success',
+      trustLevels: ['Official'],
+    },
+    {
+      label: 'Trusted, Official & Unofficial',
+      icon: 'warning-shield',
+      iconClass: 'text-warning',
+      trustLevels: ['Trusted', 'Official', 'Unofficial'],
+    },
+  ];
 
   constructor(
     private repoService: RepoService,
@@ -52,6 +83,7 @@ export class HomeComponent implements OnInit {
     private setupTenant: SetupTenantService,
     private router: Router
   ) {
+    this.trust = this.trustOptions[0].trustLevels;
     this.activatedRoute.params
       .pipe(filter((params) => !!params['org'] && !!params['repo']))
       .subscribe(({ org, repo }) => {
@@ -64,8 +96,30 @@ export class HomeComponent implements OnInit {
     this.categoryOptions = uniq(
       this.repos.map((repo) => repo['os-categories']).flat()
     );
-    this.trustOptions = uniq(this.repos.map((repo) => repo.trust_level));
+    this.selectedCategories = [...this.categoryOptions];
     this.loading = false;
+  }
+
+  deselectCategory(category: string) {
+    this.selectedCategories = this.selectedCategories.filter(
+      (selectedCategory) => selectedCategory !== category
+    );
+  }
+
+  toggleCategory(category: string) {
+    if (this.selectedCategories.includes(category)) {
+      this.deselectCategory(category);
+    } else {
+      this.selectedCategories = [...this.selectedCategories, category];
+    }
+  }
+
+  toggleAllCategories() {
+    if (this.selectedCategories.length === this.categoryOptions.length) {
+      this.selectedCategories = [];
+    } else {
+      this.selectedCategories = [...this.categoryOptions];
+    }
   }
 
   private async redirectForInstallation(org: string, repo: string) {
