@@ -37,7 +37,7 @@
       <div class="form-control">
         <ng-container
           *ngIf="
-            selectedCategories.length !== categoryOptions.length;
+            selectedCategories.length && selectedCategories.length !== categoryOptions.length;
             else allCategories
           "
         >

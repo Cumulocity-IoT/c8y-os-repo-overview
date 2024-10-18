@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
     this.repos = await this.repoService.getRepoJSON();
     this.categoryOptions = uniq(
       this.repos.map((repo) => repo['os-categories']).flat()
-    );
+    ).sort((a, b) => a.localeCompare(b));
     this.selectedCategories = [...this.categoryOptions];
     this.loading = false;
   }
