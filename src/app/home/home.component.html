@@ -175,7 +175,7 @@
           </div>
 
           <a
-            *ngIf="repo | installHref | async as installHrefForRepo"
+            *ngIf="showInstallButton && (repo | installHref | async) as installHrefForRepo"
             class="btn-primary btn-sm"
             title="Install"
             [routerLink]="installHrefForRepo"

@@ -76,6 +76,7 @@ export class HomeComponent implements OnInit {
       trustLevels: ['Trusted', 'Official', 'Unofficial'],
     },
   ];
+  showInstallButton = false;
 
   constructor(
     private repoService: RepoService,
@@ -89,6 +90,10 @@ export class HomeComponent implements OnInit {
       .subscribe(({ org, repo }) => {
         this.redirectForInstallation(org, repo);
       });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const showInstallButtonValue = urlParams.get('showInstallButton');
+    this.showInstallButton = showInstallButtonValue === 'true';
   }
 
   async ngOnInit() {
