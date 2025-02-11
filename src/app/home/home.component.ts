@@ -58,19 +58,19 @@ export class HomeComponent implements OnInit {
     iconClass: string;
   }[] = [
     {
-      label: 'Trusted & Official',
+      label: 'Trusted & Official - Only Repos which are part of Cumulocity Org. or of trusted Contributors',
       icon: 'c8y-shield',
       iconClass: 'text-info',
       trustLevels: ['Trusted', 'Official'],
     },
     {
-      label: 'Official',
+      label: 'Official - Only Repos which are part of Cumulocity Org.',
       icon: 'shield',
       iconClass: 'text-success',
       trustLevels: ['Official'],
     },
     {
-      label: 'Trusted, Official & Unofficial',
+      label: 'Trusted, Official & Unofficial - All Repos at GitHub',
       icon: 'warning-shield',
       iconClass: 'text-warning',
       trustLevels: ['Trusted', 'Official', 'Unofficial'],
