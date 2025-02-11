@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "1021.34.2",
   "name": "c8y-os-repo-overview",
   "dynamicOptionsUrl": true,
   "noLogin": true,
@@ -9,5 +9,5 @@
   },
   "contextPath": "c8y-os-repo-overview",
   "key": "c8y-os-repo-overview-application-key",
-  "webSdkVersion": "1020.26.0"
+  "webSdkVersion": "1021.34.2"
 }
