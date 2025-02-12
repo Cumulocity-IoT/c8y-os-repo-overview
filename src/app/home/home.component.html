@@ -145,7 +145,7 @@
 <ng-template #loadingIndicator>
   <c8y-loading></c8y-loading>
 </ng-template>
-
+<div><h2>Repos found: {{(repos | repoFilter : searchText : selectedCategories : trust).length}}</h2></div><br>
 <div
   *ngIf="!loading; else loadingIndicator"
   class="card-group"
