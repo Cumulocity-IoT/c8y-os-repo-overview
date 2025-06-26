@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { SearchFilters } from "@/components/SearchFilters";
@@ -12,6 +11,7 @@ const Index = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("all");
   const [trustLevel, setTrustLevel] = useState("Trusted");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [hideArchived, setHideArchived] = useState(false);
 
   const { data: repositories = [], isLoading, error } = useQuery<Repository[]>({
     queryKey: ['repositories'],
@@ -72,7 +72,9 @@ const Index = () => {
       const matchesCategory = selectedCategory === "all" || 
                             (repo["os-categories"] && repo["os-categories"].includes(selectedCategory));
 
-      return matchesSearch && matchesLanguage && matchesTrustLevel && matchesCategory;
+      const matchesArchived = !hideArchived || !repo.archived;
+
+      return matchesSearch && matchesLanguage && matchesTrustLevel && matchesCategory && matchesArchived;
     });
 
     // Sort repositories
@@ -92,7 +94,7 @@ const Index = () => {
     });
 
     return filtered;
-  }, [repositories, searchTerm, sortBy, selectedLanguage, trustLevel, selectedCategory]);
+  }, [repositories, searchTerm, sortBy, selectedLanguage, trustLevel, selectedCategory, hideArchived]);
 
   if (isLoading) {
     return (
@@ -125,10 +127,10 @@ const Index = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-medium text-c8y-text-primary mb-2">
-            Cumulocity Open-Source Explorer
+            Repository Explorer
           </h1>
           <p className="text-c8y-text-secondary">
-            Discover and explore Cumulocity open-source repositories with advanced filtering and search capabilities
+            Discover and explore repositories with advanced filtering and search capabilities
           </p>
         </div>
 
@@ -146,6 +148,8 @@ const Index = () => {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           categories={categories}
+          hideArchived={hideArchived}
+          setHideArchived={setHideArchived}
         />
 
         {/* Results Count */}

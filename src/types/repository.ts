@@ -45,4 +45,6 @@ export interface SearchFiltersProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
   categories: string[];
+  hideArchived: boolean;
+  setHideArchived: (hide: boolean) => void;
 }

@@ -3,6 +3,8 @@ import { Search, Filter, SortAsc, Shield, Tag } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { SearchFiltersProps } from "@/types/repository";
 
 export const SearchFilters = ({
@@ -18,6 +20,8 @@ export const SearchFilters = ({
   selectedCategory,
   setSelectedCategory,
   categories,
+  hideArchived,
+  setHideArchived,
 }: SearchFiltersProps) => {
   const trustLevels = ["Unofficial", "Trusted", "Official"];
   
@@ -98,29 +102,44 @@ export const SearchFilters = ({
           </div>
         </div>
 
-        {/* Trust Level Slider */}
-        <div className="flex items-center gap-4 w-full pt-4 border-t border-gray-200">
-          <div className="flex items-center gap-2">
-            <Shield className="text-gray-500 h-4 w-4" />
-            <span className="text-sm text-gray-700 font-medium">Trust Level:</span>
-          </div>
-          <div className="flex-1 max-w-xs">
-            <Slider
-              value={[getCurrentTrustIndex()]}
-              onValueChange={handleTrustLevelChange}
-              max={2}
-              min={0}
-              step={1}
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
-              <span>Unofficial</span>
-              <span>Trusted</span>
-              <span>Official</span>
+        {/* Second row with Trust Level Slider and Hide Archived Checkbox */}
+        <div className="flex flex-col sm:flex-row gap-6 pt-4 border-t border-gray-200">
+          {/* Trust Level Slider */}
+          <div className="flex items-center gap-4 flex-1">
+            <div className="flex items-center gap-2">
+              <Shield className="text-gray-500 h-4 w-4" />
+              <span className="text-sm text-gray-700 font-medium">Trust Level:</span>
+            </div>
+            <div className="flex-1 max-w-xs">
+              <Slider
+                value={[getCurrentTrustIndex()]}
+                onValueChange={handleTrustLevelChange}
+                max={2}
+                min={0}
+                step={1}
+                className="w-full"
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-2">
+                <span>Unofficial</span>
+                <span>Trusted</span>
+                <span>Official</span>
+              </div>
+            </div>
+            <div className="text-sm font-medium text-gray-800 min-w-[80px]">
+              {trustLevel}
             </div>
           </div>
-          <div className="text-sm font-medium text-gray-800 min-w-[80px]">
-            {trustLevel}
+
+          {/* Hide Archived Checkbox */}
+          <div className="flex items-center gap-2">
+            <Checkbox 
+              id="hide-archived"
+              checked={hideArchived}
+              onCheckedChange={setHideArchived}
+            />
+            <Label htmlFor="hide-archived" className="text-sm text-gray-700 font-medium">
+              Hide Archived
+            </Label>
           </div>
         </div>
       </div>
