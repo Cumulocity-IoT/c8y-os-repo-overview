@@ -126,11 +126,11 @@ const Index = () => {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-medium text-c8y-text-primary mb-2">
-            Repository Explorer
+<         h1 className="text-3xl font-medium text-c8y-text-primary mb-2">
+            Cumulocity Open-Source Explorer
           </h1>
           <p className="text-c8y-text-secondary">
-            Discover and explore repositories with advanced filtering and search capabilities
+            Discover and explore Cumulocity open-source repositories with advanced filtering and search capabilities
           </p>
         </div>
 
