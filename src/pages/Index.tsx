@@ -86,6 +86,8 @@ const Index = () => {
           return (b.forks || 0) - (a.forks || 0);
         case "updated":
           return new Date(b.last_updated).getTime() - new Date(a.last_updated).getTime();
+        case "created":
+          return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
         case "name":
           return a.name.localeCompare(b.name);
         default:

@@ -60,6 +60,7 @@ export const SearchFilters = ({
                 <SelectItem value="stars">Most Stars</SelectItem>
                 <SelectItem value="forks">Most Forks</SelectItem>
                 <SelectItem value="updated">Recently Updated</SelectItem>
+                <SelectItem value="created">Newest Repos</SelectItem>
                 <SelectItem value="name">Name (A-Z)</SelectItem>
               </SelectContent>
             </Select>
